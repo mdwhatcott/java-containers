@@ -10,16 +10,6 @@ public class vector {
         elements = new int[initialSize];
     }
 
-    public int count() {
-        return elementCount;
-    }
-
-    public void append(int i) {
-        grow();
-        elements[elementCount] = i;
-        elementCount++;
-    }
-
     private void grow() {
         if (elementCount < elements.length)
             return;
@@ -31,6 +21,16 @@ public class vector {
         elements = larger;
     }
 
+    public int count() {
+        return elementCount;
+    }
+
+    public void append(int i) {
+        grow();
+        elements[elementCount] = i;
+        elementCount++;
+    }
+
     public int at(int x) throws IndexOutOfBoundsException {
         if (x >= elementCount)
             throw new IndexOutOfBoundsException();
@@ -39,6 +39,9 @@ public class vector {
     }
 
     public int pop() throws IndexOutOfBoundsException {
+        if (count() == 0)
+            throw new IndexOutOfBoundsException();
+
         return elements[--elementCount];
     }
 
