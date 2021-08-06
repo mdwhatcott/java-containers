@@ -54,4 +54,14 @@ public class vector {
         elementCount++;
         elements[index] = value;
     }
+
+    public void remove(int index) {
+        if (index >= elementCount) {
+            throw new IndexOutOfBoundsException();
+        }
+        for (int x = index; x < elementCount; x++)
+            elements[x] = elements[x + 1];
+
+        elementCount--;
+    }
 }

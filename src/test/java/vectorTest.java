@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 [x] at     (nth)
 [x] pop
 [X] insert-at
-[ ] remove-at
+[X] remove-at
 */
 
 class vectorTest {
@@ -80,5 +80,28 @@ class vectorTest {
         assertEquals(22, v.at(2));
         assertEquals(3, v.at(3));
         assertEquals(4, v.at(4));
+    }
+
+    @Test
+    void remove() {
+        vector v = new vector();
+        v.append(0);
+        v.append(1);
+        v.append(1);
+        v.append(2);
+
+        v.remove(2);
+
+        assertEquals(0, v.at(0));
+        assertEquals(1, v.at(1));
+        assertEquals(2, v.at(2));
+    }
+
+    @Test
+    void remove_out_of_bounds() {
+        vector v = new vector();
+
+        assertThrows(IndexOutOfBoundsException.class, () -> v.remove(0));
+        assertThrows(IndexOutOfBoundsException.class, () -> v.remove(-1));
     }
 }
