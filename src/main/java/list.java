@@ -8,9 +8,9 @@ public class list {
         }
 
         int count() {
-            if (next == null) {
+            if (next == null)
                 return 1;
-            }
+
             return 1 + next.count();
         }
 
@@ -24,28 +24,27 @@ public class list {
             return next.at(current + 1, target);
         }
 
-        public void insert(int current, int target, int value) throws IndexOutOfBoundsException{
+        public void insert(int current, int target, int value) throws IndexOutOfBoundsException {
             if ((current + 1) == target) {
                 node n = new node(value);
                 n.next = next;
                 next = n;
-            } else if (current < target) {
-                next.insert(current+1, target, value);
-            } else {
+            } else if (next == null)
                 throw new IndexOutOfBoundsException();
-            }
+            else
+                next.insert(current + 1, target, value);
         }
 
         public void remove(int current, int target) throws IndexOutOfBoundsException {
-            if ((current + 1) == target) {
+            if ((current + 1) == target)
                 next = next.next;
-            } else if (current < target && next != null)  {
-                next.remove(current+1, target);
-            } else {
+            else if (next == null)
                 throw new IndexOutOfBoundsException();
-            }
+            else
+                next.remove(current + 1, target);
         }
     }
+
     private node root;
 
     public int count() {

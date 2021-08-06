@@ -19,9 +19,9 @@ public class vector {
             return;
 
         int[] larger = new int[count() * 2]; // TODO: maybe slow the growth at a certain point?
-        for (int x = 0; x < count(); x++) {
+        for (int x = 0; x < count(); x++)
             larger[x] = elements[x];
-        }
+
         elements = larger;
     }
 
@@ -58,9 +58,9 @@ public class vector {
     }
 
     public void remove(int index) {
-        if (index >= count()) {
+        if (index >= count())
             throw new IndexOutOfBoundsException();
-        }
+
         for (int x = index; x < count(); x++)
             elements[x] = elements[x + 1];
 

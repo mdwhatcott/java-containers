@@ -71,6 +71,8 @@ class listTest {
     void insert_at_out_of_bounds() {
         list l = new list();
         assertThrows(IndexOutOfBoundsException.class, () -> l.insert(0, 42));
+
+        l.prepend(0);
         assertThrows(IndexOutOfBoundsException.class, () -> l.insert(10, 42));
         assertThrows(IndexOutOfBoundsException.class, () -> l.insert(-1, 42));
     }
