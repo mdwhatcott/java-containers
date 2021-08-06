@@ -10,29 +10,28 @@ public class vector {
         elements = new int[initialSize];
     }
 
+    public int count() {
+        return elementCount;
+    }
+
     private void grow() {
-        if (elementCount < elements.length)
+        if (count() < elements.length)
             return;
 
-        int[] larger = new int[elements.length * 2]; // TODO: maybe slow the growth at a certain point?
-        for (int x = 0; x < elements.length; x++) {
+        int[] larger = new int[count() * 2]; // TODO: maybe slow the growth at a certain point?
+        for (int x = 0; x < count(); x++) {
             larger[x] = elements[x];
         }
         elements = larger;
     }
 
-    public int count() {
-        return elementCount;
-    }
-
     public void append(int i) {
         grow();
-        elements[elementCount] = i;
-        elementCount++;
+        elements[elementCount++] = i;
     }
 
     public int at(int x) throws IndexOutOfBoundsException {
-        if (x >= elementCount)
+        if (x >= count())
             throw new IndexOutOfBoundsException();
 
         return elements[x];
@@ -48,7 +47,7 @@ public class vector {
     public void insert(int index, int value) {
         grow();
 
-        for (int x = elementCount; x > index; x--)
+        for (int x = count(); x > index; x--)
             elements[x] = elements[x - 1];
 
         elementCount++;
@@ -56,10 +55,10 @@ public class vector {
     }
 
     public void remove(int index) {
-        if (index >= elementCount) {
+        if (index >= count()) {
             throw new IndexOutOfBoundsException();
         }
-        for (int x = index; x < elementCount; x++)
+        for (int x = index; x < count(); x++)
             elements[x] = elements[x + 1];
 
         elementCount--;

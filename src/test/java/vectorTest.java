@@ -36,8 +36,8 @@ class vectorTest {
     @Test
     void pop() {
         vector v = new vector();
-
         v.append(1);
+
         int popped = v.pop();
 
         assertEquals(1, popped);
