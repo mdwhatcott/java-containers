@@ -18,7 +18,7 @@ class vectorTest {
     }
 
     @Test
-    void append_grow_nth() {
+    void append_grow_at() {
         int totalItems = 100;
         vector v = new vector(16);
 
@@ -33,7 +33,7 @@ class vectorTest {
     }
 
     @Test
-    void nth_out_of_bounds() {
+    void at_out_of_bounds() {
         vector v = new vector();
 
         assertThrows(IndexOutOfBoundsException.class, () -> {
