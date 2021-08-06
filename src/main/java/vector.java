@@ -1,5 +1,3 @@
-import java.util.stream.IntStream;
-
 public class vector {
     private int elementCount;
     private int[] elements;
@@ -17,26 +15,40 @@ public class vector {
     }
 
     public void append(int i) {
-        if (elementCount == elements.length) grow();
+        grow();
         elements[elementCount] = i;
         elementCount++;
     }
 
     private void grow() {
+        if (elementCount < elements.length)
+            return;
+
         int[] larger = new int[elements.length * 2]; // TODO: maybe slow the growth at a certain point?
-        IntStream.range(0, elements.length).forEach(x -> larger[x] = elements[x]);
+        for (int x = 0; x < elements.length; x++) {
+            larger[x] = elements[x];
+        }
         elements = larger;
     }
 
     public int at(int x) throws IndexOutOfBoundsException {
-        if (x >= elementCount) {
+        if (x >= elementCount)
             throw new IndexOutOfBoundsException();
-        }
+
         return elements[x];
     }
 
     public int pop() throws IndexOutOfBoundsException {
-        elementCount--;
-        return elements[elementCount];
+        return elements[--elementCount];
+    }
+
+    public void insert(int index, int value) {
+        grow();
+
+        for (int x = elementCount; x > index; x--)
+            elements[x] = elements[x - 1];
+
+        elementCount++;
+        elements[index] = value;
     }
 }

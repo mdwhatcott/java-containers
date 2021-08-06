@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 [x] append (conj)
 [x] at     (nth)
 [x] pop
+[X] insert-at
 [ ] remove-at
-[ ] insert-at
 */
 
 class vectorTest {
@@ -63,5 +63,22 @@ class vectorTest {
     @Test
     void pop_empty() {
         assertThrows(IndexOutOfBoundsException.class, new vector()::pop);
+    }
+
+    @Test
+    void insert_at() {
+        vector v = new vector(4);
+        v.append(0);
+        v.append(1);
+        v.append(3);
+        v.append(4);
+
+        v.insert(2, 22);
+
+        assertEquals(0, v.at(0));
+        assertEquals(1, v.at(1));
+        assertEquals(22, v.at(2));
+        assertEquals(3, v.at(3));
+        assertEquals(4, v.at(4));
     }
 }
