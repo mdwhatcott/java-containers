@@ -67,6 +67,13 @@ class vectorTest {
     }
 
     @Test
+    void insert_at_out_of_bounds() {
+        vector v = new vector();
+        assertThrows(IndexOutOfBoundsException.class, () -> v.insert(10, 42));
+        assertThrows(IndexOutOfBoundsException.class, () -> v.insert(-1, 42));
+    }
+
+    @Test
     void remove() {
         vector v = new vector();
         v.append(0);

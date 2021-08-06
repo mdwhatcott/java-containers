@@ -44,7 +44,10 @@ public class vector {
         return elements[--elementCount];
     }
 
-    public void insert(int index, int value) {
+    public void insert(int index, int value) throws IndexOutOfBoundsException {
+        if (index >= count())
+            throw new IndexOutOfBoundsException();
+
         grow();
 
         for (int x = count(); x > index; x--)
