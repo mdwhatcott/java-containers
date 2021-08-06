@@ -2,14 +2,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/*
-[x] append (conj)
-[x] at     (nth)
-[x] pop
-[X] insert-at
-[X] remove-at
-*/
-
 class vectorTest {
     @Test
     void empty_upon_instantiation() {
@@ -36,17 +28,9 @@ class vectorTest {
     void at_out_of_bounds() {
         vector v = new vector();
 
-        assertThrows(IndexOutOfBoundsException.class, () -> {
-            v.at(0);
-        });
-
-        assertThrows(IndexOutOfBoundsException.class, () -> {
-            v.at(100);
-        });
-
-        assertThrows(IndexOutOfBoundsException.class, () -> {
-            v.at(-1);
-        });
+        assertThrows(IndexOutOfBoundsException.class, () -> v.at(0));
+        assertThrows(IndexOutOfBoundsException.class, () -> v.at(100));
+        assertThrows(IndexOutOfBoundsException.class, () -> v.at(-1));
     }
 
     @Test
