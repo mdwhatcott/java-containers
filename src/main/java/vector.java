@@ -34,4 +34,9 @@ public class vector {
         }
         return elements[x];
     }
+
+    public int pop() throws IndexOutOfBoundsException {
+        elementCount--;
+        return elements[elementCount];
+    }
 }

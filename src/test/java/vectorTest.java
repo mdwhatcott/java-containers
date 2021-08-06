@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /*
 [x] append (conj)
 [x] at     (nth)
-[ ] pop
+[x] pop
 [ ] remove-at
 [ ] insert-at
 */
@@ -47,5 +47,21 @@ class vectorTest {
         assertThrows(IndexOutOfBoundsException.class, () -> {
             v.at(-1);
         });
+    }
+
+    @Test
+    void pop() {
+        vector v = new vector();
+
+        v.append(1);
+        int popped = v.pop();
+
+        assertEquals(1, popped);
+        assertEquals(0, v.count());
+    }
+
+    @Test
+    void pop_empty() {
+        assertThrows(IndexOutOfBoundsException.class, new vector()::pop);
     }
 }
